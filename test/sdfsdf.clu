@@ -1,0 +1,204 @@
+-----------------------------------------------------------------------
+-- Панель управления на экране выбора персонажа
+-----------------------------------------------------------------------
+frmSelect = UI_CreateForm( "frmSelect", FALSE, 522, 83, 200, 200, TRUE, FALSE )
+UI_ShowForm( frmSelect, TRUE )
+UI_AddFormToTemplete( frmSelect, FORM_SELECT )
+UI_FormSetIsEscClose( frmSelect, FALSE )
+--UI_SetFormStyle( frmSelect, FORM_TOP )
+--UI_SetFormStyleEx( frmSelect, 6, 0, 2 )
+
+-- Фон формы
+imgSelect1 = UI_CreateCompent( frmSelect, IMAGE_TYPE, "imgSelect1", 522, 83, 0, 24 )
+UI_LoadImage( imgSelect1, "texture/ui/select.tga", NORMAL, 522, 83, 0, 0 )
+
+-- Создать
+btnCreate = UI_CreateCompent( frmSelect, BUTTON_TYPE, "btnCreate", 67, 29, 149, 50 )
+UI_LoadButtonImage( btnCreate, "texture/ui/select.tga", 67, 29, 0, 90, FALSE )
+
+-- Удалить
+btnDel = UI_CreateCompent( frmSelect, BUTTON_TYPE, "btnDel", 67, 29, 219, 50 )
+UI_LoadButtonImage( btnDel, "texture/ui/select.tga", 67, 29, 67, 90, FALSE )
+
+-- Войти
+btnYes = UI_CreateCompent( frmSelect, BUTTON_TYPE, "btnYes", 67, 29, 289, 50 )
+UI_LoadButtonImage( btnYes, "texture/ui/select.tga", 67, 29, 134, 90, FALSE )
+
+-- Выйти
+btnNo = UI_CreateCompent( frmSelect, BUTTON_TYPE, "btnNo", 67, 29, 359, 50 )
+UI_LoadButtonImage( btnNo, "texture/ui/select.tga", 67, 29, 0, 206, TRUE )
+
+-- Изменить
+btnAlter = UI_CreateCompent( frmSelect, BUTTON_TYPE, "btnAlter", 67, 29, 429 , 50 )
+UI_LoadButtonImage( btnAlter, "texture/ui/select.tga", 67, 29, 201, 90, FALSE )
+
+-----------------------------------------------------------------------
+--  кнопка назад из окна выбора класса персоонажа при создании пресоонажа 
+-----------------------------------------------------------------------
+frmQuit = UI_CreateForm( "frmQuit", FALSE, 98, 36, 380, 507, TRUE, FALSE )
+UI_ShowForm( frmQuit, TRUE )
+UI_AddFormToTemplete( frmQuit, FORM_CREATE_CHA )
+UI_SetFormStyleEx( frmQuit, 7, 0, 2 )
+UI_FormSetIsEscClose( frmQuit, FALSE )
+
+-- Логотип
+imgLogo = UI_CreateCompent( frmQuit, IMAGE_TYPE, "imgLogo", 266, 192, 300, -700 )
+UI_LoadImage( imgLogo, "texture/ui/logo.tga", NORMAL, 266, 192, 0, 0 )
+
+--  нопка выхода
+btnNo = UI_CreateCompent( frmQuit, BUTTON_TYPE, "btnNo", 155, 82, -24, -20 )
+UI_LoadButtonImage( btnNo, "texture/ui/select/frmQuit.tga", 155, 82, 0, 0, TRUE )
+
+imgBack = UI_CreateCompent( frmQuit, IMAGE_TYPE, "imgBack", 1024, 768, -463, -692 )
+
+-----------------------------------------------------------------------
+-- форма окна создания персоонажа
+-----------------------------------------------------------------------
+frmFound = UI_CreateForm( "frmFound", FALSE, 508, 394, 0, 0, TRUE, FALSE )
+UI_ShowForm( frmFound, TRUE )
+UI_AddFormToTemplete( frmFound, FORM_CREATE_CHA )
+UI_SetFormStyleEx( frmFound, 1 )
+UI_FormSetIsEscClose( frmFound, FALSE )
+
+imgBack = UI_CreateCompent( frmFound, IMAGE_TYPE, "imgBack", 1024, 768, -283, -196 )
+
+imgFoundTop = UI_CreateCompent( frmFound, IMAGE_TYPE, "imgFoundTop", 508, 394, 0, 0 )
+UI_LoadImage( imgFoundTop, "texture/ui/index/creature/character.tga", NORMAL, 508, 394, 0, 0 )
+
+-- Заголовок
+UI_DrawTitle(frmFound, "testoch")
+
+-- Область текста Мемо
+memChaDescribe  = UI_CreateCompent( frmFound, MEMO_TYPE, "memChaDescribe", 183 + 26, 83, 297, 53 )
+UI_SetTextColor( memChaDescribe, COLOR_BLACK )
+UI_SetCaption( memChaDescribe, "" )
+UI_SetMemoMaxNumPerRow(memChaDescribe, 27 )
+UI_SetMemoPageShowNum(memChaDescribe, 4 )
+UI_SetMemoRowHeight( memChaDescribe , 22 )
+
+-- Скролл
+UI_DrawScroll(memChaDescribe)
+
+-- Поле ввода Имени
+edtName = UI_CreateCompent( frmFound, EDIT_TYPE, "edtName", 117, 12, 333, 201 )
+UI_SetTextColor( edtName, COLOR_WHITE )
+UI_SetEditCursorColor( edtName, COLOR_WHITE )
+UI_SetEditMaxNum( edtName, 16 )
+UI_SetEditMaxNumVisible( edtName, 16 )
+
+-- Прическа
+labHairShow = UI_CreateCompent( frmFound, LABELEX_TYPE, "labHairShow", 61, 12, 334, 263 )
+UI_SetCaption( labHairShow, "" )
+UI_SetTextColor( labHairShow, COLOR_WHITE )
+
+-- Левая кнопа Прическа
+btnLeftHair = UI_CreateCompent( frmFound, BUTTON_TYPE, "btnLeftHair", 14, 13, 310, 262 )
+UI_LoadButtonImage( btnLeftHair, "texture/ui/buttons/index.tga", 14, 13, 270, 104, TRUE )
+
+-- Правая кнопка Прическа
+btnRightHair = UI_CreateCompent( frmFound, BUTTON_TYPE, "btnRightHair", 13, 10, 453, 262 )
+UI_LoadButtonImage( btnRightHair, "texture/ui/buttons/index.tga", 14, 13, 270, 117, TRUE )
+
+-- Лицо
+labFaceShow = UI_CreateCompent( frmFound, LABELEX_TYPE, "labFaceShow", 61, 12, 334, 324 )
+UI_SetCaption( labFaceShow, "" )
+UI_SetTextColor( labFaceShow, COLOR_WHITE )
+
+-- Левая кнопка Лицо
+btnLeftFace = UI_CreateCompent( frmFound, BUTTON_TYPE, "btnLeftFace", 14, 13, 310, 323 )
+UI_LoadButtonImage( btnLeftFace, "texture/ui/buttons/index.tga", 14, 13, 270, 104, TRUE )
+
+-- Правая кнопка Лицо
+btnRightFace = UI_CreateCompent( frmFound, BUTTON_TYPE, "btnRightFace", 14, 13, 453, 323 )
+UI_LoadButtonImage( btnRightFace, "texture/ui/buttons/index.tga", 14, 13, 270, 117, TRUE )
+
+-- Да
+btnYes = UI_DrawButton(frmFound, "yes", 316, 358, "btnYes")
+
+-- Нет
+btnNo = UI_DrawButton(frmFound, "no", 393, 358, "btnNo")
+
+-- Персонаж
+ui3dCreateCha = UI_CreateCompent( frmFound, UI3D_COMPENT, "ui3dCreateCha", 255, 341, 14, 38 )
+
+-- Поворот налево
+btnLeft3d = UI_CreateCompent( frmFound, BUTTON_TYPE, "btnLeft3d", 28, 55, 25, 313 )
+UI_LoadButtonImage( btnLeft3d, "texture/ui/buttons/index.tga", 28, 55, 270, 140, TRUE )
+
+-- Поворот направо
+btnRight3d = UI_CreateCompent( frmFound, BUTTON_TYPE, "btnRight3d", 28, 55, 230, 313 )
+UI_LoadButtonImage( btnRight3d, "texture/ui/buttons/index.tga",  28, 55, 270, 196, TRUE )
+
+
+-----------------------------------------------------------------------
+-- форма окна выбора стартового города
+-----------------------------------------------------------------------
+frmCity = UI_CreateForm( "frmCity", FALSE, 483, 393, 30, 25, TRUE, FALSE )
+UI_ShowForm( frmCity, TRUE )
+UI_AddFormToTemplete( frmCity, FORM_CREATE_CHA )
+UI_AddFormToTemplete( frmCity, 1 )
+UI_FormSetIsEscClose( frmCity, FALSE )
+
+-- город не выбран
+imgCity00 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity00", 483, 393, 0, 0 )
+UI_LoadImage( imgCity00, "texture/ui/frmCity0.tga", NORMAL, 483, 393, 0, 0 )
+imgCity01 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity01", 203, 256, 256, 0 )
+imgCity02 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity02", 256, 129, 0, 256 )
+imgCity03 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity03", 203, 129, 256, 256 )
+
+-- Аргент
+imgCity1 = UI_CreateCompent( frmCity, BUTTON_TYPE, "imgCity1", 157, 198, 8, 157 )
+
+imgCity10 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity10", 483, 393, 0, 0 )
+UI_LoadImage( imgCity10, "texture/ui/frmCity1.tga", NORMAL, 483, 393, 0, 0 )
+imgCity11 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity11", 203, 256, 256, 0 )
+imgCity12 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity12", 256, 129, 0, 256 )
+imgCity13 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity13", 203, 129, 256, 256 )
+
+-- Шайтан
+imgCity2 = UI_CreateCompent( frmCity, BUTTON_TYPE, "imgCity2", 226, 152, 218, 244 )
+
+imgCity20= UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity20", 483, 393, 0, 0 )
+UI_LoadImage( imgCity20, "texture/ui/frmCity2.tga", NORMAL, 483, 393, 0, 0 )
+imgCity21 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity21", 203, 256, 256, 0 )
+imgCity22 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity22", 256, 129, 0, 256 )
+imgCity23 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity23", 203, 129, 256, 256 )
+
+-- Ледынь
+imgCity3 = UI_CreateCompent( frmCity, BUTTON_TYPE, "imgCity3", 391, 92, 52, 61 )
+
+imgCity30 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity30", 483, 393, 0, 0 )
+UI_LoadImage( imgCity30, "texture/ui/frmCity3.tga", NORMAL, 483, 393, 0, 0 )
+imgCity31 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity31", 203, 256, 256, 0 )
+imgCity32 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity32", 256, 129, 0, 256 )
+imgCity33 = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgCity33", 203, 129, 256, 256 )
+
+-- фон кнопки выхода
+--imgQuit = UI_CreateCompent( frmCity, IMAGE_TYPE, "imgQuit", 328, 36, 70, 390 )
+--UI_LoadImage( imgQuit, "texture/ui/xDesign/select.tga", NORMAL, 328, 36, 0, 85 )
+
+-- кнопка выход
+--btnNo = UI_CreateCompent( frmCity, BUTTON_TYPE, "btnNo", 47, 16, 205, 400 )
+--UI_LoadButtonImage( btnNo, "texture/ui/xDesign/Button1.tga", 47, 16, 203, 152, TRUE )
+
+
+-----------------------------------------------------------------------
+-- Окно приветствия 
+-----------------------------------------------------------------------	
+frmRoleInfo = UI_CreateForm("frmRoleInfo", TRUE, 600, 450, 50 , 450, TRUE,TRUE)
+UI_ShowForm(frmRoleInfo, FALSE )
+UI_SetIsDrag(frmRoleInfo, FALSE)
+UI_FormSetIsEscClose(frmRoleInfo, FALSE)
+UI_SetFormStyle(frmRoleInfo,1)
+UI_AddFormToTemplete( frmRoleInfo, FORM_CREATE_CHA )
+
+--UI_FormSetHotKey( frmRoleInfo, ALT_KEY, HOTKEY_Z ) 
+
+--Подложка
+imgRoleInfo1 = UI_CreateCompent(frmRoleInfo, IMAGE_TYPE,"imgRoleInfo1", 600, 450, 0, 0)
+UI_LoadImage( imgRoleInfo1, "texture/ui/select/hello_world.tga", NORMAL, 600, 450, 0, 0)
+
+-- Заголовок
+UI_DrawTitle(frmRoleInfo, "bitcho")
+
+btnNextStep = UI_DrawButton(frmRoleInfo, "ok", 267, 408, "btnNextStep")
